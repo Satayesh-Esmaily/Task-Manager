@@ -3,8 +3,9 @@ import {
   Stack,
   Checkbox,
   Typography,
-  IconButton,
+  Button,
 } from "@mui/material";
+import { pink } from "@mui/material/colors";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function TaskItem({ task, onToggle, onDelete }) {
@@ -14,7 +15,15 @@ export default function TaskItem({ task, onToggle, onDelete }) {
         <Checkbox
           checked={task.done}
           onChange={() => onToggle(task.id)}
+          inputProps={{ 'aria-label': 'Task checkbox' }}
+          sx={{
+            color: pink[800],
+            '&.Mui-checked': {
+              color: pink[600],
+            },
+          }}
         />
+
 
         <Typography
           sx={{
@@ -26,9 +35,11 @@ export default function TaskItem({ task, onToggle, onDelete }) {
           {task.title}
         </Typography>
 
-        <IconButton onClick={() => onDelete(task.id)}>
-          <DeleteIcon />
-        </IconButton>
+<Button variant="outlined" startIcon={<DeleteIcon />}
+ onClick={() => onDelete(task.id)}>
+  
+  Delete
+</Button>
       </Stack>
     </Card>
   );
