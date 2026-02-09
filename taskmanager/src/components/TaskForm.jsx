@@ -11,13 +11,12 @@ export default function TaskForm({ onAdd }) {
 
   return (
     <Stack direction="row" spacing={2} mb={3}>
-      <TextField
+    <TextField id="standard-basic" label="new" variant="standard"
         fullWidth
         size="small"
-        label="New task"
+        color="warning"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+        onChange={(e) => setValue(e.target.value)} />
       <Button variant="contained" onClick={submitHandler}>
         Add
       </Button>

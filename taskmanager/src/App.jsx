@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
+import Header from "./components/Header";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
@@ -12,27 +13,22 @@ export default function App() {
   };
 
   const toggleTask = (id) => {
-    setTasks(tasks.map(t =>
-      t.id === id ? { ...t, done: !t.done } : t
-    ));
+    setTasks(
+      tasks.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
+    );
   };
 
   const deleteTask = (id) => {
-    setTasks(tasks.filter(t => t.id !== id));
+    setTasks(tasks.filter((t) => t.id !== id));
   };
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 6 }}>
-      <Typography variant="h4" mb={3} align="center">
-        Mini Task Manager
-      </Typography>
-
-      <TaskForm onAdd={addTask} />
-      <TaskList
-        tasks={tasks}
-        onToggle={toggleTask}
-        onDelete={deleteTask}
-      />
-    </Container>
+    <>
+      <Header />
+      <Container maxWidth="sm" sx={{ mt: 4 }}>
+        <TaskForm onAdd={addTask} />
+        <TaskList tasks={tasks} onToggle={toggleTask} onDelete={deleteTask} />
+      </Container>
+    </>
   );
 }
