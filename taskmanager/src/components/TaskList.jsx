@@ -1,4 +1,4 @@
-import TaskItem from "./TaskItem";
+import TaskItem from "./TasKItem";
 import { Stack, Typography } from "@mui/material";
 
 export default function TaskList({ tasks, onToggle, onDelete }) {
